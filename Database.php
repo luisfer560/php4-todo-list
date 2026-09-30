@@ -11,14 +11,15 @@
 
             try {
                 $this->conn = new PDO(
-                    "mysql:host" . $this->host . "; db_name" . $this-> db_name,
+                    "mysql:host=" . $this->host . "; dbname=" . $this-> db_name,
                     $this->username, 
-                    $this->password 
+                    $this->password
                 );
-                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO:: ERRMODE_EXCEPTION);
+                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $exception) {
                 echo "error de conexion: " . $exception->getMessage();
             }
+            return $this->conn;
         }
     }
 ?>
